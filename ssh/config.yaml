@@ -1,5 +1,5 @@
 ---
-version: 9.10.1
+version: 9.10.0
 slug: ssh
 name: Terminal & SSH
 description: Allow logging in remotely to Home Assistant using SSH
@@ -7,11 +7,7 @@ url: https://github.com/wx-ast/ha_ssh/tree/master/ssh
 codenotary: notary@home-assistant.io
 advanced: true
 arch:
-  - armhf
-  - armv7
   - aarch64
-  - amd64
-  - i386
 audio: true
 hassio_api: true
 hassio_role: manager
