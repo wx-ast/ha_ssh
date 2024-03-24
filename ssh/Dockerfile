@@ -19,6 +19,8 @@ RUN \
         pwgen \
         tmux \
         vim \
+        python3 \
+        py3-pip \
     \
     && apk add --no-cache --virtual .build-dependencies \
         bsd-compat-headers \
@@ -29,8 +31,6 @@ RUN \
         libuv-dev \
         openssl-dev \
         zlib-dev \
-        python3 \
-        py3-pip
     \
     && pip3 --break-system-packages install rmate \
     && sed -i "s/ash/bash/" /etc/passwd \
