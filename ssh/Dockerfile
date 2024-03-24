@@ -32,7 +32,7 @@ RUN \
         openssl-dev \
         zlib-dev \
     \
-    && pip3 install rmate \
+    && pip3 install rmate --break-system-packages \
     && sed -i "s/ash/bash/" /etc/passwd \
     \
     && git clone --branch "v4.3.3" --depth=1 \
