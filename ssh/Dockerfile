@@ -1,5 +1,5 @@
 ARG BUILD_FROM
-FROM $BUILD_FROM
+FROM ghcr.io/home-assistant/aarch64-base:3.19
 
 # Setup base
 ARG LIBWEBSOCKETS_VERSION
@@ -32,10 +32,10 @@ RUN \
         openssl-dev \
         zlib-dev \
     \
-    && pip3 --break-system-packages install rmate \
+    && pip3 install rmate \
     && sed -i "s/ash/bash/" /etc/passwd \
     \
-    && git clone --branch "v${LIBWEBSOCKETS_VERSION}" --depth=1 \
+    && git clone --branch "v4.3.3" --depth=1 \
         https://github.com/warmcat/libwebsockets.git /tmp/libwebsockets \
     \
     && mkdir -p /tmp/libwebsockets/build \
@@ -55,7 +55,7 @@ RUN \
     \
     && git clone --branch main --single-branch \
         https://github.com/tsl0922/ttyd.git /tmp/ttyd \
-    && git -C /tmp/ttyd checkout "${TTYD_VERSION}" \
+    && git -C /tmp/ttyd checkout "1.7.4" \
     \
     && mkdir -p /tmp/ttyd/build \
     && cd /tmp/ttyd/build \
@@ -80,7 +80,7 @@ RUN sed -i 's/^#[[:space:]]*\(include "\/usr\/share\/nano\/\*\.nanorc".*\)/\1/' 
 ARG BUILD_ARCH
 ARG CLI_VERSION
 RUN curl -Lso /usr/bin/ha \
-        "https://github.com/home-assistant/cli/releases/download/${CLI_VERSION}/ha_${BUILD_ARCH}" \
+        "https://github.com/home-assistant/cli/releases/download/4.31.0/ha_aarch64" \
     && chmod a+x /usr/bin/ha \
     && /usr/bin/ha completion > /usr/share/bash-completion/completions/ha
 
