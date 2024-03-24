@@ -29,7 +29,10 @@ RUN \
         libuv-dev \
         openssl-dev \
         zlib-dev \
+        python3 \
+        py3-pip
     \
+    && pip3 --break-system-packages install rmate \
     && sed -i "s/ash/bash/" /etc/passwd \
     \
     && git clone --branch "v${LIBWEBSOCKETS_VERSION}" --depth=1 \
