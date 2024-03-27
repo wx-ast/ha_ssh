@@ -19,6 +19,7 @@ RUN \
         pwgen \
         tmux \
         vim \
+        htop \
         python3 \
         py3-pip \
     \
